@@ -1,0 +1,15 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./media:/app/media
+      - ./db.sqlite3:/app/db.sqlite3
+    environment:
+      - DEBUG=False
+      - ALLOWED_HOSTS=y2mate.andyanh.id.vn,localhost,127.0.0.1
+      - CSRF_TRUSTED_ORIGINS=https://y2mate.andyanh.id.vn
+      - SECRET_KEY=change-this-in-production-please-secure-random-string
+    restart: unless-stopped
+    container_name: youtube-downloader
